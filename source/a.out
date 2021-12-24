@@ -1,0 +1,107 @@
+#!/bin/sh
+echo "보고 싶은 파일명을 입력"
+read fname
+if [ -f $fname ] && [ -s $fname ]
+then
+	head -5 $fname
+else
+	echo "파일이 없거나 크기가 0 입니다"
+fi
+exit 0
+#!/bin/sh
+case "$1" in
+	start)
+		echo "시작";;
+	stop)
+		echo "중지";;
+	restart)
+		echo "다시시작";;
+	*)
+		echo "?";;
+esac
+exit 0
+
+#!/bin/sh
+echo "case esac 테스트 중입니다 (yes / no)"
+read answer
+case $answer in
+	yes | y | Y | Yes | YES)
+		echo "예스";;
+	[nN]*)
+		echo "노";;
+	*)
+		echo "yes 아니면 no만입력"
+		exit 1;;
+esac
+exit 0
+#!/bin/sh
+
+for pal in Tom Dick Harry Joe
+do
+echo "Hi $pal"
+done
+echo "Out of File"
+exit 0
+#!/bin/sh/
+for fname in $(ls *.sh)
+do 
+	cat $fname >> a.out
+done
+exit 0
+#!/bin/sh
+echo input user name :
+read username
+if grep $username /etc/passwd
+then 
+	echo "true"
+fi
+exit 0
+#!/bin/sh
+
+if [ "woo" = "woo" ]
+then
+	echo "true"
+else
+	echo "false"
+fi
+exit 0
+#!/bin/sh
+user=root
+if [ "$user" == "root" ]
+then
+	echo "root user"
+elif grep $username /etc/passwd
+then echo "허가된 사용자"
+else echo "허가되지 않은 사용자"
+fi
+exit 0
+#!/bin/sh
+
+fname=/root/shell/if4.sh
+if [ -f $fname ]
+then
+	cat $fname
+else
+	echo "파일이 없습니다"
+fi
+exit 0
+#!/bin/sh
+num1=100
+num2=$num1+200
+echo $num2
+num3=`expr $num1 + 200`
+echo $num3
+num4=`expr \( $num1 + 200 \) / 10 \* 2`
+echo $num4
+exit 0 
+#!/bin/sh
+num1=100
+num2=0.1
+num3=`echo $num1 \* $num2 | bc -l`
+echo $num3
+exit 0
+#!/bin/sh
+echo "exe_file name is <$0>"
+echo "1st_param <$1>, 2nd_param <$2>"
+echo "full param <$*>"
+exit 0
