@@ -38,3 +38,18 @@ ex) who | tee -a tee.out
 -a : 파일에 이어서 쓰기
 -i : 인터럽트 무시
 
+awk
+자료 처리 및 리포트 생성에 사용하는 프로그래밍 언어
+awk [옵션] [/찾을문자열/] ['{명령어}'] 파일명
+NF - 필드 개수
+$(NF-1) - 마지막 전 필드
+$0 - 모든 필드
+$1 - 첫 번째 필드
+
+ex)
+echo | awk '{ print 3+2 }'                       # 산술 연산
+cat /etc/passwd | awk /root/                     # 행단위 검색
+awk /root/ /etc/passwd
+ls -l test.out | awk '{print $9 " user is " $3}' # 위치변수로 문장만들기
+find ~ -name "*.sh" | awk -F/ '{print $NF}'      # find한 것을 구분자를 사용해서 출력
+awk -F: '/root/ {print $1}' /etc/passwd          # 구분자 사용 root가 포함된 행의 $1 뽑아내기
